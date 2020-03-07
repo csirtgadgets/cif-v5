@@ -1,32 +1,31 @@
 sudo: required
 language: python
 cache:
-    - apt
-    - pip
-
+- apt
+- pip
 python:
-  - 3.6
-  - 3.7
-
+- 3.6
+- 3.7
 before_install:
-  - sudo add-apt-repository -y ppa:maxmind/ppa
-  - sudo apt-get update
-  - sudo apt-get install geoipupdate libsnappy-dev
-  - sudo rm -f /etc/GeoIP.conf
-  - echo "UserId $MM_USERID" | sudo tee /etc/GeoIP.conf > /dev/null
-  - echo "LicenseKey $MM_LIC" | sudo tee -a /etc/GeoIP.conf > /dev/null
-  - echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf > /dev/null
-  - sudo geoipupdate
-
+- sudo add-apt-repository -y ppa:maxmind/ppa
+- sudo apt-get update
+- sudo apt-get install geoipupdate libsnappy-dev
+- sudo rm -f /etc/GeoIP.conf
+- echo "UserId $MM_USERID" | sudo tee /etc/GeoIP.conf > /dev/null
+- echo "LicenseKey $MM_LIC" | sudo tee -a /etc/GeoIP.conf > /dev/null
+- echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf
+  > /dev/null
+- sudo geoipupdate
 install:
-  - pip install -r dev_requirements.txt
-
+- pip install -r dev_requirements.txt
 script:
-  - python3 setup.py test
-  - python3 setup.py sdist bdist bdist_wheel
-
+- python3 setup.py test
+- python3 setup.py sdist bdist bdist_wheel
 notifications:
   email:
     on_success: never
     on_failure: change
-
+env:
+  global:
+  - secure: Dt66JWZJswhcddLr3OhIPArTWCJbLCS1LDkfi1W/76O3hZ94h/zx6pHbI15E9ki1ozZadyvOqy0CCx8KXf93ZDB4b92DOC6bkP3V/lSMn6btnR9WXg/oEvb657eCwHyvoR5A1gbxn5Dv5L0Lg4vNMaWwdCeLwYnEMl7lISwZhIR4bZj+1iqnWviNjKgGpqAuLtRqFD2dqRHUpWiUdMWKYKYRMxkXxq5RlJeJ5CMo/2hsaPpexuLN7cxa7uHK78/iQTgz5DlHSfsrqIKIMj4VMuIK+oaokf2x1Rgy5zixZa5vnFQpVgGfZgsFcHD2iShNo9LQRmQMMqun48o7CnaoGJv5pBfRuht0p5kv5dnZqNB8Qmu4csP7kTXrl0Y0IgOvoEaFbjkzb+9CSpAwEau5bL2tc6a38g45maLyGIxtJg9LzbMVPJ3tUO3ufT7zniHU5iSgYXUNEIPb64Mwf6ym0VJxF9FWQvDEXiXlnK+EA74tV7R+64AHYUhSQEubH/1Cti8F7MgQhg8zDfAG0E4bkC0Wne4lzq5wydD4kIUcyb77ayC9Zc6KbwoohpLTqQPWMDoPxCFDYeU84b/kfHNNzaEeF1tvbOymefzm07bKB4A8KF9K6nGKz5+DYmEWh0BjTvNE+K+nOZYXWwUeuCteDr8drvUZIse41ybbiCSYXik=
+  - secure: EuawZS7hK7nZcc6196ZIi6Zty9SBQY581j4kmwIJDDTcXeHiv/6eJYLmY5tMLLmqXfakAvL+y9YayxoszameJPk1hvQ/5HUrAl/FWdEcIn03vWRYxsHm7M2S8UZXd6tDbuZx7irJOPHn2iind7OhbrcN1N0OsH7OsZ4VAGsJ7Rip76LZvg/f9eXdJgHftZKRJ40ynt6lnuUQoua0vcsZjKlA1zZ6YNNTGkRQWcoFN0VNDTMhyUGG3tyzaFLXUJffFkhhHH58TaHt5ZeVTFp5o6QgPQ9PdqojYvHYDb9mU9euyT2+Rr7NbiBUTcAxm/Ca2d9SSADRfWHngG3nMO+RFkVaE/iOvONb6rtgcqlcld6TYSqmK997ivpk5beLPwM9jcKlmzRQ9lzve1I5b7bQ/HoY4o1VKPu2SQ5sMA8JMMeUwV67EPSFkQ+uvEVV/OJLWzMmZM07+113TOOthcgxaFzz0t0IPiJmZ7EEVFES3uu1GtIfTRcJ9A8q3SoB7nihb4JTEyYUWKQcPrqPeRTBIfx36f7CerGn9Nht2763t+h572R5S41Rr7fwmZT7DFoz7D764++pZVCMSkKCb0168pJkSD/7BJSdCRUq8kwnPWqFRegTv5Ldtav+3vdxnzm4X7h5Cd0TOdjK48Ert+zf38LZv4ythfGz0YTB80yC7rQ=
