@@ -3,5 +3,6 @@ pytest-cov>=2.6
 pytest>=4.2
 faker>=0.7,<0.8
 pytest-pycodestyle
+xenon
 
 -r requirements.txt
