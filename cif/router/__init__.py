@@ -24,6 +24,8 @@ from cif.router.constants import ROUTER_ADDR, ZMQ_SNDTIMEO, ZMQ_RCVTIMEO, \
     FRONTEND_TIMEOUT, BACKEND_TIMEOUT, TRACE, ZMQ_HWM, LOG_LEVEL, ENRICHMENT, \
     HUNT
 
+from cif.constants import VERSION
+
 from cif.store.constants import STORE_DEFAULT, STORE_PLUGINS
 
 logger = logging.getLogger(__name__)
@@ -146,8 +148,12 @@ def main():
         '''),
         formatter_class=RawDescriptionHelpFormatter,
         prog='cif-router',
-        parents=[p]
     )
+    p.add_argument('-d', '--debug', dest='debug', action="store_true")
+    p.add_argument('-v', '--verbose', action='store_true')
+
+    p.add_argument('-V', '--version', action='version',
+                   version=VERSION)
 
     p.add_argument('-E', '--enrichment', help='Enable Enrichment',
                    default=ENRICHMENT, action='store_true')
