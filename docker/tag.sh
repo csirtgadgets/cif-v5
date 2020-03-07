@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION="`cif --version`"
+VERSION="`cif-router --version`"
 IMAGES="cif-base cif-router csirtg-fm cif-enricher cif-hunter cif-httpd"
 
 if [[ ${VERSION} == "" ]]; then
