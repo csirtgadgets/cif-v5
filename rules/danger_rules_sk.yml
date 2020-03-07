@@ -1,0 +1,11 @@
+---
+feeds:
+  ssh:
+    remote: http://danger.rulez.sk/projects/bruteforceblocker/blist.php
+    pattern: '^(\S+)[\s|\t]+#\s(\S+\s\S+)'
+    values:
+      - indicator
+      - lasttime
+    defaults:
+      tags: scanner, bruteforce, ssh
+      description: scanner

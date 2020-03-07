@@ -1,0 +1,8 @@
+feeds:
+  compromised-ips:
+    remote: http://rules.emergingthreats.net/blockrules/compromised-ips.txt
+    defaults:
+      last_at: 'day'
+      description: 'compromised ip'
+      tags: malware, compromised, bot
+      confidence: 2

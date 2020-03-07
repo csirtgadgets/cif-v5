@@ -1,0 +1,35 @@
+remote: http://malc0de.com/rss
+defaults:
+  tags: malware
+
+feeds:
+  urls:
+    itype: url
+    defaults:
+      tags: malware
+
+    map:
+      summary:
+        pattern: '^URL: (.+), IP Address: \S+?, Country: \S+, ASN: \S+, MD5: \S+'
+        values:
+          - indicator
+
+      link:
+        pattern: '(\S+)'
+        values:
+          - reference
+
+  malware:
+    defaults:
+      tags: malware
+
+    map:
+      summary:
+        pattern: '^URL: .+, IP Address: \S+?, Country: \S+, ASN: \S+, MD5: (\S+)'
+        values:
+          - indicator
+
+      link:
+        pattern: '(\S+)'
+        values:
+          - reference

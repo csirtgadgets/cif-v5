@@ -1,0 +1,28 @@
+defaults:
+  tags:
+    - hijacked
+  confidence: 4
+  reference: http://www.spamhaus.org/sbl/sbl.lasso?query={description}
+  last_at: 'day'
+  provider: spamhaus.org
+  values:
+    - indicator
+    - description
+
+feeds:
+  drop:
+    remote: http://www.spamhaus.org/drop/drop.txt
+
+  edrop:
+    remote: http://www.spamhaus.org/drop/edrop.txt
+
+  dropv6:
+    remote: https://www.spamhaus.org/drop/dropv6.txt
+
+  asndrop:
+    remote: https://www.spamhaus.org/drop/asndrop.txt
+    pattern: '^(\S+) ; ([\S+]{2}) \| ([^\n]+)$'
+    values:
+      - indicator
+      - cc
+      - asn_desc

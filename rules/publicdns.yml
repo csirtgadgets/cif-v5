@@ -1,0 +1,10 @@
+feeds:
+  dns:
+    remote: http://public-dns.info/nameservers.csv
+    defaults:
+        tags: whitelist, dns
+        portlist: 53
+        description: public dns resolver
+        reference: http://public-dns.info
+        last_at: day
+        confidence: 4

@@ -1,0 +1,46 @@
+# make sure the CSIRTG_TOKEN envvar is set with your API token
+# sign up and get a FREE token at https://csirtg.io
+limit: 250
+
+feeds:
+  # A feed of IP addresses block by a firewall (e.g. port scanners)
+  csirtgadgets/darknet:
+    defaults:
+      tags: scanner, darknet
+
+  # A feed of URLs seen in the message body of UCE email. Do not alert or block
+  # on these urls without additional post-processing.
+  csirtgadgets/uce-urls:
+    defaults:
+      tags: uce
+
+  # A feed of email addresses seen in UCE email. Do not alert or block on these
+  # email addresses without additional post-processing.
+  csirtgadgets/uce-email-addresses:
+    defaults:
+      tags: uce
+
+
+  # A feed of IP addresses seen delivering UCE email. This could be a machine that
+  # is compromised or a user account has been compromised and used to send UCE.
+  csirtgadgets/uce-ip:
+    defaults:
+      tags: uce
+
+  csirtgadgets/httpd:
+    defaults:
+      tags: scanner, http
+
+  csirtgadgets/smtp:
+    defaults:
+      tags: scanner, smtp
+
+  csirtgadgets/sshlogger:
+    defaults:
+      tags: scanner, ssh
+
+  csirtgadgets/correlated:
+    defaults:
+      tags: scanner
+      confidence: 4
+      description: observed across multiple users feeds

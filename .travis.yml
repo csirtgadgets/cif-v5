@@ -1,0 +1,32 @@
+sudo: required
+language: python
+cache:
+    - apt
+    - pip
+
+python:
+  - 3.6
+  - 3.7
+
+before_install:
+  - sudo add-apt-repository -y ppa:maxmind/ppa
+  - sudo apt-get update
+  - sudo apt-get install geoipupdate libsnappy-dev
+  - sudo rm -f /etc/GeoIP.conf
+  - echo "UserId $MM_USERID" | sudo tee /etc/GeoIP.conf > /dev/null
+  - echo "LicenseKey $MM_LIC" | sudo tee -a /etc/GeoIP.conf > /dev/null
+  - echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf > /dev/null
+  - sudo geoipupdate
+
+install:
+  - pip install -r dev_requirements.txt
+
+script:
+  - python3 setup.py test
+  - python3 setup.py sdist bdist bdist_wheel
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+

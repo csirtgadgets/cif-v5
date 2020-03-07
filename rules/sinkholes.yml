@@ -1,0 +1,8 @@
+
+feeds:
+  sinkholes:
+    remote: https://raw.githubusercontent.com/brakmic/Sinkholes/master/Sinkholes_List.csv
+    defaults:
+      tags: sinkhole
+      last_at: 'day'
+      provider: github.com/brakmic/Sinkholes

@@ -1,0 +1,18 @@
+---
+feeds:
+  c2_ipmasterlist_high:
+    remote: http://osint.bambenekconsulting.com/feeds/c2-ipmasterlist-high.txt
+    defaults:
+      confidence: 3
+      tags: botnet
+
+  c2_domain_masterlist_high:
+    remote: http://osint.bambenekconsulting.com/feeds/c2-dommasterlist-high.txt
+    defaults:
+      tags: botnet
+      confidence: 3
+
+  #dga_domains_high:
+  #  remote: http://osint.bambenekconsulting.com/feeds/dga-feed-high.csv.gz
+  #  defaults:
+  #    tags: dga, botnet

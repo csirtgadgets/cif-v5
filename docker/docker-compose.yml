@@ -1,0 +1,65 @@
+
+version: '3'
+
+services:
+
+  cif-router:
+    image: csirtgadgets/cif-router:latest
+    container_name: cif-router
+
+    # shared volume for IPC pipes between instances
+    volumes:
+      - ./data/cif:/var/lib/cif
+    environment:
+      CIF_DATA_PATH: /var/lib/cif
+      CIF_HUNT: 1
+      CIF_ROUTER_TRACE: 1
+
+
+  cif-enricher:
+    depends_on:
+      - cif-router
+    image: csirtgadgets/cif-enricher:latest
+    container_name: cif-enrichers
+    volumes:
+      - ./data/geo:/var/lib/GeoIP/
+      - ./data/cif:/var/lib/cif/
+    environment:
+      CIF_ENRICHMENT_THREADS: 2
+      MAXMIND_USERID: ${MAXMIND_USERID}
+      MAXMIND_LIC: ${MAXMIND_LIC}
+
+  cif-hunter:
+    depends_on:
+      - cif-router
+    image: csirtgadgets/cif-hunter:latest
+    container_name: cif-hunter
+    volumes:
+      - ./data/geo:/var/lib/GeoIP
+      - ./data/cif:/var/lib/cif
+    environment:
+      CIF_HUNTER_THREADS: 4
+      MAXMIND_USERID: ${MAXMIND_USERID}
+      MAXMIND_LIC: ${MAXMIND_LIC}
+
+  csirtg-fm:
+    depends_on:
+      - cif-router
+    image: csirtgadgets/csirtg-fm:latest
+    container_name: csirtg-fm
+    volumes:
+      - ./data/fm:/var/lib/fm
+      - ./data/cif:/var/lib/cif
+    environment:
+      PHISHTANK_TOKEN: ${PHISHTANK_TOKEN}
+      CSIRTG_TOKEN: ${CSIRTG_TOKEN}
+
+  cif-httpd:
+    depends_on:
+      - cif-router
+    image: csirtgadgets/cif-httpd:latest
+    container_name: cif-httpd
+    volumes:
+      - ./data/cif:/var/lib/cif
+    ports:
+      - '5000:5000'

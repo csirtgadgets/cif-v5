@@ -1,0 +1,35 @@
+skip: '^Site$'
+defaults:
+  tlp: green
+  reference_tlp: white
+  provider: 'isc.sans.edu'
+  pattern:  '^(.+)$'
+  values: indicator
+  tags: suspicious
+
+feeds:
+  02_domains_low:
+    defaults:
+      confidence: 1
+    remote: https://isc.sans.edu/feeds/suspiciousdomains_Low.txt
+
+  01_domains_medium:
+    defaults:
+      confidence: 2
+    remote:  https://isc.sans.edu/feeds/suspiciousdomains_Medium.txt
+
+  00_domains_high:
+    defaults:
+      confidence: 3
+    remote: https://isc.sans.edu/feeds/suspiciousdomains_High.txt
+
+  block:
+    remote: https://isc.sans.edu/feeds/block.txt
+    defaults:
+      confidence: 4
+    pattern: ^(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)\t\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b\t(\d+)
+    values:
+      - indicator
+      - mask
+    tags: scanner
+    last_at: 'month'

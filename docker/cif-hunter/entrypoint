@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+
+if [ ! -f /var/lib/GeoIP/GeoLite2-Country.mmdb ]; then
+    if [ ! -z ${MAXMIND_USERID} ] && [ ${MAXMIND_USERID} != "" ]; then
+        echo "UserId ${MAXMIND_USERID}" > /etc/GeoIP.conf
+        echo "LicenseKey ${MAXMIND_LIC}" >> /etc/GeoIP.conf
+        echo "ProductIds GeoLite2-ASN GeoLite2-City GeoLite2-Country" >> /etc/GeoIP.conf
+
+        echo 'updating geoip'
+        geoipupdate -v
+        /etc/init.d/cron start
+    else
+        echo "missing MAXMIND_USERID and MAXMIND_LIC env vars..."
+    fi
+fi
+
+export CIF_RUNTIME_PATH=/var/lib/cif
+
+cif-hunter

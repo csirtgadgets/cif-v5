@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+export CIF_HTTPD_LISTEN=0.0.0.0
+export CIF_RUNTIME_PATH=/var/lib/cif
+export CIF_HTTPD_PIDFILE=/tmp/cif_httpd.pid
+
+if [ -z ${CIF_REMOTE} ] || [ ${CIF_REMOTE} == "" ]; then
+    export CIF_REMOTE="ipc:///var/lib/cif/router.ipc"
+fi
+
+/usr/local/bin/gunicorn \
+    --log-level debug -b :5000 \
+    -w 4 -t 90 --graceful-timeout 60 \
+    --max-requests-jitter 5 --max-requests 25 -k gevent \
+    cif.http.app:app

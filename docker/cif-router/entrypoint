@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+chown -R cif:cif /var/lib/cif
+chown -R cif:cif /home/cif
+
+export CIF_RUNTIME_PATH=/var/lib/cif
+export CIF_DATA_PATH=/var/lib/cif
+
+cif-router

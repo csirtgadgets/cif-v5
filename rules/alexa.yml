@@ -1,0 +1,17 @@
+---
+defaults:
+  values:
+    - rank
+    - indicator
+  description: 'alexa'
+  tags: whitelist
+  reference: 'http://www.alexa.com/siteinfo/{indicator}'
+  provider: alexa.com
+  last_at: 'day'
+  confidence: 4
+  goback: 30
+
+feeds:
+  top-1000:
+    remote: http://s3.amazonaws.com/alexa-static/top-1m.csv.zip
+    limit: 1000

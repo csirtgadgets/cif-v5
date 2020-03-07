@@ -1,0 +1,9 @@
+
+
+feeds:
+  freemail:
+    remote: https://raw.githubusercontent.com/wesbos/burner-email-providers/master/emails.txt
+    defaults:
+      tags: freemail,spam
+      description: freemail provider
+      provider: github.com/wesbos

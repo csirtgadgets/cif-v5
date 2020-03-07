@@ -1,0 +1,13 @@
+defaults:
+  tags: bogon,hijacked
+  confidence: 4
+  description: non-routed address
+  last_at: day
+
+feeds:
+  v4:
+    remote: https://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt
+    defaults:
+
+  v6:
+    remote: https://www.team-cymru.org/Services/Bogons/fullbogons-ipv6.txt

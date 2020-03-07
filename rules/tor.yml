@@ -1,0 +1,12 @@
+
+feeds:
+  tor:
+    remote: https://check.torproject.org/exit-addresses
+    pattern: '^ExitAddress (\S+) (.+)$'
+    values:
+      - indicator
+      - last_at
+    defaults:
+      tags: proxy,tor
+      description: tor exit node
+      confidence: 4

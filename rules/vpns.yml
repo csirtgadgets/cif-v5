@@ -1,0 +1,13 @@
+defaults:
+  tags: vpn
+  first_at: day
+  last_at: day
+  description: vpn service
+  provider: github.com/ejrv
+
+feeds:
+  ipv4:
+    remote: https://raw.githubusercontent.com/ejrv/VPNs/master/vpn-ipv4.txt
+ 
+  ipv6:
+    remote: https://raw.githubusercontent.com/ejrv/VPNs/master/vpn-ipv6.txt

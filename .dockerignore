@@ -1,0 +1,3 @@
+*.ipc
+docker/data
+data/*

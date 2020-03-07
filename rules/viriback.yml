@@ -1,0 +1,7 @@
+reverse: '1' 
+feeds:
+  urls:
+    remote: http://tracker.viriback.com/dump.php
+    provider: viriback.com
+    defaults:
+      tags: botnet

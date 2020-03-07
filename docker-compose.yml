@@ -1,0 +1,58 @@
+
+version: '3'
+
+services:
+
+  cif-router:
+    image: csirtgadgets/cif-router:latest
+    container_name: cif-router
+
+    # shared volume for IPC pipes between instances
+    volumes:
+      - ./data/cif:/var/lib/cif
+    environment:
+      CIF_DATA_PATH: /var/lib/cif
+#      CIF_ROUTER_TRACE: 1
+#      CIF_STORE_TRACE: 1
+#      CIF_STORE_SQLITE_TRACE: 1
+
+  csirtg-fm:
+    depends_on:
+      - cif-router
+    image: csirtgadgets/csirtg-fm:latest
+    container_name: csirtg-fm
+    volumes:
+      - ./data/fm:/var/lib/fm
+      - ./data/cif:/var/lib/cif
+    environment:
+      PHISHTANK_TOKEN: ${PHISHTANK_TOKEN}
+      CSIRTG_TOKEN: ${CSIRTG_TOKEN}
+#      CSIRTG_FM_LOGLEVEL: "DEBUG"
+      CSIRTG_FM_DELAY: 1
+
+  # applies basic enrichemnt to the data as it streams in (eg: goip)
+  cif-enricher:
+    depends_on:
+      - cif-router
+    image: csirtgadgets/cif-enricher:latest
+    container_name: cif-enrichers
+    volumes:
+      - ./data/cif:/var/lib/cif
+      - ./data/geo:/var/lib/GeoIP
+    environment:
+      MAXMIND_USERID: ${MAXMIND_USERID}
+      MAXMIND_LIC: ${MAXMIND_LIC}
+
+  # REST interface
+  cif-httpd:
+    depends_on:
+      - cif-router
+    image: csirtgadgets/cif-httpd:latest
+    container_name: cif-httpd
+    volumes:
+      - ./data/cif:/var/lib/cif
+    ports:
+      - '5000:5000'
+    environment:
+#      CIF_HTTPD_TRACE: 1
+      ZMQ_RCVTIMEO: 60000

@@ -1,0 +1,8 @@
+
+feeds:
+  darklist:
+    remote: http://www.darklist.de/raw.php
+    defaults:
+      tags: scanner, bruteforce
+      confidence: 2
+

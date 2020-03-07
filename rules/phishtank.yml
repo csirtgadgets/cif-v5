@@ -1,0 +1,17 @@
+---
+# https://www.phishtank.com/developer_info.php
+# remote: http://data.phishtank.com/data/<api-token>/online-valid.json.gz
+token: 'PHISHTANK_TOKEN'  # export PHISHTANK_TOKEN=1234 in your env and csirtg-fm will pick it up
+remote: http://data.phishtank.com/data/{token}/online-valid.json.gz
+
+feeds:
+  urls:
+    defaults:
+      provider: phishtank.com
+      tags: phishing
+    map:
+      - target
+      - details
+    values:
+      - description
+      - additional_data

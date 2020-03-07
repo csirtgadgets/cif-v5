@@ -1,0 +1,11 @@
+
+feeds:
+  proxy:
+    remote: https://sblam.com/blacklist.txt
+    defaults:
+      last_at: day
+      tags:
+        - spam,forum
+    pattern: '^(\S+)$'
+    values:
+      - indicator

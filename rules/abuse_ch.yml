@@ -1,0 +1,28 @@
+---
+feeds:
+
+  urlhaus:
+    remote: https://urlhaus.abuse.ch/downloads/csv
+    defaults:
+      tags: exploit, malware
+
+
+  feodo_malware:
+    remote: https://feodotracker.abuse.ch/downloads/malware_hashes.csv
+    values:
+      - last_at
+      - indicator
+      - description
+    defaults:
+      tags: malware
+
+  feodo_botnet:
+    remote: https://feodotracker.abuse.ch/downloads/ipblocklist_aggressive.csv
+    values:
+      - last_at
+      - indicator
+      - portlist
+      - description
+    defaults:
+      tags: botnet
+      confidence: 3

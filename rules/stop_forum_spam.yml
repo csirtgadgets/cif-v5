@@ -1,0 +1,22 @@
+
+defaults:
+  provider: stopforumspam.com
+  defaults:
+    tags: spam,forums
+    decription: forum spam
+
+feeds:
+  ips:
+    remote: 'https://www.stopforumspam.com/downloads/listed_ip_1_ipv46.zip'
+
+  domains:
+    remote: http://stopforumspam.com/downloads/toxic_domains_whole_filtered_10000.txt
+
+  emails:
+    remote: 'http://stopforumspam.com/downloads/listed_email_1_all.zip'
+
+  nets:
+    remote: https://www.stopforumspam.com/downloads/toxic_ip_cidr.txt
+    defaults:
+      confidence: 2
+      last_at: day
