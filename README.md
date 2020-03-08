@@ -72,6 +72,8 @@ If you've never worked on a GitHub project, [this is a good piece](https://guide
 * [How To Contribute](contributing.md)  
 * [Project Page](http://csirtgadgets.com/collective-intelligence-framework/)
 
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YZPQXDLNYZZ3W)
+
 # COPYRIGHT AND LICENSE
 
 Copyright (C) 2020 [the CSIRT Gadgets](http://csirtgadgets.com)
