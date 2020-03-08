@@ -6,6 +6,7 @@ $ export CSIRTG_TOKEN=1234  # sign up at csirtg.io
 $ export MAXMIND_USERID=1234  # sign up at maxmind.com
 $ export MAXMIND_LIC=1234
 
+$ git clone https://github.com/csirtgadgets/cif-v5.git
 $ mkdir data  # shared data directory for containers
 $ cp cif-v5/docker-compose.yml ./
 $ docker-compose pull
