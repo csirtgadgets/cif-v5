@@ -38,6 +38,8 @@ $ cif -nq example.com
 
 # Building Locally
 ```bash
+$ git clone https://github.com/csirtgadgets/cif-v5.git
+$ cd cif-v5/
 $ make docker
 $ make docker-tag
 $ docker-compose up -d
