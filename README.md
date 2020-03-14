@@ -8,6 +8,7 @@ $ export CSIRTG_TOKEN=1234  # sign up at csirtg.io
 $ export MAXMIND_USERID=1234  # sign up at maxmind.com to leverage geo location data
 $ export MAXMIND_LIC=1234
 
+$ git clone https://github.com/csirtgadgets/cif-v5.git
 $ mkdir data  # shared data directory for containers
 $ cp cif-v5/docker-compose.yml ./
 $ docker-compose pull
@@ -48,6 +49,8 @@ $ cif -nq example.com
 
 # Building Locally
 ```bash
+$ git clone https://github.com/csirtgadgets/cif-v5.git
+$ cd cif-v5/
 $ make docker
 $ make docker-tag
 $ docker-compose up -d
@@ -79,6 +82,8 @@ If you've never worked on a GitHub project, [this is a good piece](https://guide
 
 * [How To Contribute](contributing.md)  
 * [Project Page](http://csirtgadgets.com/collective-intelligence-framework/)
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YZPQXDLNYZZ3W)
 
 # COPYRIGHT AND LICENSE
 
