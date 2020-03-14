@@ -12,6 +12,7 @@ services:
       - ./data/cif:/var/lib/cif
     environment:
       CIF_DATA_PATH: /var/lib/cif
+      CIF_LOGLEVEL: "INFO"
 #      CIF_ROUTER_TRACE: 1
 #      CIF_STORE_TRACE: 1
 #      CIF_STORE_SQLITE_TRACE: 1
@@ -24,10 +25,11 @@ services:
     volumes:
       - ./data/fm:/var/lib/fm
       - ./data/cif:/var/lib/cif
+      - ./data/rules:/local_rules  # copy your to data/rules, they'll be picked up automatically
     environment:
       PHISHTANK_TOKEN: ${PHISHTANK_TOKEN}
       CSIRTG_TOKEN: ${CSIRTG_TOKEN}
-#      CSIRTG_FM_LOGLEVEL: "DEBUG"
+      CSIRTG_FM_LOGLEVEL: "INFO"
       CSIRTG_FM_DELAY: 1
 
   # applies basic enrichemnt to the data as it streams in (eg: goip)
@@ -42,6 +44,7 @@ services:
     environment:
       MAXMIND_USERID: ${MAXMIND_USERID}
       MAXMIND_LIC: ${MAXMIND_LIC}
+      CIF_LOGLEVEL: "INFO"
 
   # REST interface
   cif-httpd:
@@ -56,3 +59,4 @@ services:
     environment:
 #      CIF_HTTPD_TRACE: 1
       ZMQ_RCVTIMEO: 60000
+      CIF_LOGLEVEL: "INFO"
