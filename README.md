@@ -7,6 +7,8 @@ The default, CIF/Docker configuration is NOT meant to be deployed in large scale
 ### [Need More Help?](https://csirtg.io/support)
 
 ## Docker
+### Up and Running
+
 ```bash
 $ export CSIRTG_TOKEN=1234  # sign up at csirtg.io
 $ export MAXMIND_USERID=1234  # sign up at maxmind.com to leverage geo location data
@@ -20,8 +22,31 @@ $ # cp my_custom_rule.yml data/rules/
 $ chmod 755 data/rules
 $ docker-compose pull
 $ docker-compose up -d
+```
 
+### Status
+```bash
 $ docker-compose logs -f
+Attaching to cif-router, cif-httpd, cif-enrichers, csirtg-fm
+cif-httpd       | [2020-03-14 15:05:29 +0000] [7] [INFO] Starting gunicorn 19.10.0
+cif-httpd       | [2020-03-14 15:05:29 +0000] [7] [INFO] Listening at: http://0.0.0.0:5000 (7)
+cif-httpd       | [2020-03-14 15:05:29 +0000] [7] [INFO] Using worker: gevent
+cif-httpd       | [2020-03-14 15:05:29 +0000] [10] [INFO] Booting worker with pid: 10
+cif-httpd       | [2020-03-14 15:05:29 +0000] [11] [INFO] Booting worker with pid: 11
+cif-httpd       | [2020-03-14 15:05:29 +0000] [12] [INFO] Booting worker with pid: 12
+cif-httpd       | [2020-03-14 15:05:29 +0000] [13] [INFO] Booting worker with pid: 13
+csirtg-fm       | 2020-03-14 15:05:30,107 - INFO - csirtg_fm.cli[316] - random delay is 1.0
+csirtg-fm       | 2020-03-14 15:05:30,107 - INFO - csirtg_fm.cli[317] - running every 60 after that  # <--- data will start coming in after this 60 delay
+csirtg-fm       | 2020-03-14 15:06:30,184 - INFO - csirtg_fm.cli[85] - starting run...
+csirtg-fm       | 2020-03-14 15:06:30,261 - INFO - csirtg_fm.cli[157] - processing: openphish.yml - urls
+csirtg-fm       | 2020-03-14 15:06:38,681 - INFO - csirtg_fm.cli[157] - processing: abuse_ch.yml - urlhaus
+csirtg-fm       | 2020-03-14 15:07:01,407 - INFO - csirtg_fm[125] - sending: 6
+csirtg-fm       | 2020-03-14 15:07:01,598 - INFO - csirtg_fm.cli[157] - processing: abuse_ch.yml - feodo_malware
+csirtg-fm       | 2020-03-14 15:07:20,339 - INFO - csirtg_fm.cli[157] - processing: abuse_ch.yml - feodo_botnet
+csirtg-fm       | 2020-03-14 15:07:32,947 - INFO - csirtg_fm[125] - sending: 31
+csirtg-fm       | 2020-03-14 15:07:33,745 - INFO - csirtg_fm.cli[157] - processing: alexa.yml - top-1000
+csirtg-fm       | 2020-03-14 15:07:36,896 - INFO - csirtg_fm[125] - sending: 500
+csirtg-fm       | 2020-03-14 15:07:45,937 - INFO - csirtg_fm[125] - sending: 500
 ```
 
 ## Testing
