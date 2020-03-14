@@ -5,10 +5,6 @@ set -e
 chown -R cif:cif /var/lib/fm
 chown -R cif:cif /etc/cif
 
-chmod -R 660 /etc/cif/rules
-chmod 770 /etc/cif/rules
-chmod 770 /etc/cif/rules/default
-
 export CSIRTG_FM_CACHE_PATH="/var/lib/fm"
 export CSIRTG_FM_RUNTIME_PATH="/var/lib/fm"
 export CSIRTG_FM_GOBACK_DAYS=21
@@ -17,4 +13,4 @@ if [ -z ${CIF_REMOTE} ] || [ ${CIF_REMOTE} == "" ]; then
     export CIF_REMOTE="ipc:///var/lib/cif/router.ipc"
 fi
 
-csirtg-fm --service -r /etc/cif/rules/default --remember --skip-invalid --client cifzmq --limit 10000
+csirtg-fm --service -r /local_rules,/etc/cif/rules --remember --skip-invalid --client cifzmq --limit 10000

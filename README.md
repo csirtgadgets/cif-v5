@@ -1,6 +1,10 @@
 # Getting Started
 
-### [Need Help?](https://csirtg.io/support)
+CIF is a model, .. it's a toy. While it's used in a number of large scale environments, it's meant to be a teaching tool. It enables you as an operator to learn from years of operational, institutional knowledge. The default, out of the box configuration is geared 100% towards getting you up and running  as quickly as possible (5min or less) so you can LEARN from our experience. 
+
+The default, CIF/Docker configuration is NOT meant to be deployed in large scale operations. That's your job. Taking what you've learned and the components we've given you, then creating your own master piece with them. Better yet- because of them.
+
+### [Need More Help?](https://csirtg.io/support)
 
 ## Docker
 ```bash
@@ -11,6 +15,9 @@ $ export MAXMIND_LIC=1234
 $ git clone https://github.com/csirtgadgets/cif-v5.git
 $ mkdir data  # shared data directory for containers
 $ cp cif-v5/docker-compose.yml ./
+$ mkdir -p data/rules  # copy any local custom rules here
+$ # cp my_custom_rule.yml data/rules/
+$ chmod 755 data/rules
 $ docker-compose pull
 $ docker-compose up -d
 
@@ -22,7 +29,8 @@ $ docker-compose logs -f
 $ pip install 'cifsdk>=5.0b1,<6.0'
 
 $ export CIF_REMOTE='http://localhost:5000'
-$ cif -nq example.com 
+$ cif -nq example.com
+$ cif --itype url --tags malware  # may have to wait 5-10 after starting as data flows in
 ```
 
 ## Where Next?

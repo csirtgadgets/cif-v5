@@ -11,7 +11,7 @@ if [ -z ${CIF_REMOTE} ] || [ ${CIF_REMOTE} == "" ]; then
 fi
 
 /usr/local/bin/gunicorn \
-    --log-level debug -b :5000 \
+    --log-level info -b :5000 \
     -w 4 -t 90 --graceful-timeout 60 \
-    --max-requests-jitter 5 --max-requests 25 -k gevent \
+    --max-requests-jitter 5 --max-requests 100 -k gevent \
     cif.http.app:app

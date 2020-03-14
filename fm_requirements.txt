@@ -9,4 +9,4 @@ arrow~=0.15
 lxml
 pyyaml
 
-csirtg-fm>=2.0b2,<3.0
+csirtg-fm>=2.0b4,<3.0
