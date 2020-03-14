@@ -31,7 +31,7 @@ $ cif -nq example.com
 * [Working with csirtg-fm to parse threat intel](https://github.com/csirtgadgets/csirtg-fm-v2/wiki)
 * [Working with the SDK](https://github.com/csirtgadgets/cifsdk-v5-py/wiki)
 * [Working with the API](https://github.com/csirtgadgets/cif-v5/wiki/REST-API)
-* [Adding your custom csirtg-fm rules]
+* [Working with custom threat feeds](https://github.com/csirtgadgets/cif-v5/wiki/Custom-threat-feeds)
 * [Integrating into your infrastructure](https://github.com/csirtgadgets/cif-v5/wiki/Where-do-I-start-with-Integrations)
 
 # What's Changed?
