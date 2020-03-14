@@ -11,8 +11,8 @@ from zmq import POLLIN as Z_POLLIN
 import os
 import time
 
-from cifsdk.utils import setup_logging, setup_runtime_path, \
-    get_argument_parser
+from cifsdk.utils import setup_logging, setup_runtime_path
+from cifsdk.constants import RUNTIME_PATH
 
 from cifsdk.zmq.socket import Context as CTX
 from cif.store.manager import Manager as StoreManager
@@ -136,7 +136,6 @@ class Router(object):
 
 
 def main():
-    p = get_argument_parser()
     p = ArgumentParser(
         description=textwrap.dedent('''\
         Env Variables:
@@ -148,6 +147,11 @@ def main():
         '''),
         formatter_class=RawDescriptionHelpFormatter,
         prog='cif-router',
+    )
+    p.add_argument(
+        "--runtime-path",
+        help="specify the runtime path [default %(default)s]",
+        default=RUNTIME_PATH
     )
     p.add_argument('-d', '--debug', dest='debug', action="store_true")
     p.add_argument('-v', '--verbose', action='store_true')

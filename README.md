@@ -1,9 +1,11 @@
 # Getting Started
 
+### [Need Help?](https://csirtg.io/support)
+
 ## Docker
 ```bash
 $ export CSIRTG_TOKEN=1234  # sign up at csirtg.io
-$ export MAXMIND_USERID=1234  # sign up at maxmind.com
+$ export MAXMIND_USERID=1234  # sign up at maxmind.com to leverage geo location data
 $ export MAXMIND_LIC=1234
 
 $ mkdir data  # shared data directory for containers
@@ -21,6 +23,15 @@ $ pip install 'cifsdk>=5.0b1,<6.0'
 $ export CIF_REMOTE='http://localhost:5000'
 $ cif -nq example.com 
 ```
+
+## Where Next?
+
+* [Review the wiki](https://github.com/csirtgadgets/cif-v5/wiki)
+* [Working with csirtg-fm to parse threat intel](https://github.com/csirtgadgets/csirtg-fm-v2/wiki)
+* [Working with the SDK](https://github.com/csirtgadgets/cifsdk-v5-py/wiki)
+* [Working with the API](https://github.com/csirtgadgets/cif-v5/wiki/REST-API)
+* [Adding your custom csirtg-fm rules]
+* [Integrating into your infrastructure](https://github.com/csirtgadgets/cif-v5/wiki/Where-do-I-start-with-Integrations)
 
 # What's Changed?
 
