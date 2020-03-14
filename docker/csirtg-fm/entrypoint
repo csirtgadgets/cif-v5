@@ -13,4 +13,8 @@ if [ -z ${CIF_REMOTE} ] || [ ${CIF_REMOTE} == "" ]; then
     export CIF_REMOTE="ipc:///var/lib/cif/router.ipc"
 fi
 
+if [ ! -d /local_rules ]; then
+  mkdir /local_rules
+fi
+
 csirtg-fm --service -r /local_rules,/etc/cif/rules --remember --skip-invalid --client cifzmq --limit 10000

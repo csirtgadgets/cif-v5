@@ -66,6 +66,7 @@ $ cif --itype url --tags malware  # may have to wait 5-10 after starting as data
 * [Working with the API](https://github.com/csirtgadgets/cif-v5/wiki/REST-API)
 * [Working with custom threat feeds](https://github.com/csirtgadgets/cif-v5/wiki/Custom-threat-feeds)
 * [Integrating into your infrastructure](https://github.com/csirtgadgets/cif-v5/wiki/Where-do-I-start-with-Integrations)
+* [Navigate to the LOCAL API](http://localhost:5000)
 
 # What's Changed?
 
