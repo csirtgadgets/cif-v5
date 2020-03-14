@@ -28,6 +28,7 @@ services:
       CIF_ENRICHMENT_THREADS: 2
       MAXMIND_USERID: ${MAXMIND_USERID}
       MAXMIND_LIC: ${MAXMIND_LIC}
+      CIF_LOGLEVEL: "INFO"
 
   cif-hunter:
     depends_on:
@@ -41,6 +42,7 @@ services:
       CIF_HUNTER_THREADS: 4
       MAXMIND_USERID: ${MAXMIND_USERID}
       MAXMIND_LIC: ${MAXMIND_LIC}
+      CIF_LOGLEVEL: "INFO"
 
   csirtg-fm:
     depends_on:
@@ -53,6 +55,7 @@ services:
     environment:
       PHISHTANK_TOKEN: ${PHISHTANK_TOKEN}
       CSIRTG_TOKEN: ${CSIRTG_TOKEN}
+      CIF_LOGLEVEL: "INFO"
 
   cif-httpd:
     depends_on:
@@ -63,3 +66,5 @@ services:
       - ./data/cif:/var/lib/cif
     ports:
       - '5000:5000'
+    environment:
+      CIF_LOGLEVEL: "INFO"
