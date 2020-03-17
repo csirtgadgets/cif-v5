@@ -4,6 +4,8 @@ CIF is a model, .. it's a toy. While it's used in a number of large scale enviro
 
 The default, CIF/Docker configuration is NOT meant to be deployed in large scale operations. That's your job. Taking what you've learned and the components we've given you, then creating your own master piece with them. Better yet- because of them.
 
+**python 3.6+ is required (eg: Ubuntu 18 LTS or higher)**
+
 ### [Need More Help?](https://csirtg.io/support)
 
 ## Docker
