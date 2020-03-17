@@ -55,7 +55,7 @@ csirtg-fm       | 2020-03-14 15:07:45,937 - INFO - csirtg_fm[125] - sending: 500
 ```bash
 # this requires python3.6 or higher (eg: ubuntu 18 LTS..)
 
-$ pip install 'cifsdk>=5.0b1,<6.0'
+$ pip3 install 'cifsdk>=5.0b1,<6.0'
 
 $ export CIF_REMOTE='http://localhost:5000'
 $ cif -nq example.com
