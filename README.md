@@ -4,6 +4,8 @@ CIF is a model, .. it's a toy. While it's used in a number of large scale enviro
 
 The default, CIF/Docker configuration is NOT meant to be deployed in large scale operations. That's your job. Taking what you've learned and the components we've given you, then creating your own master piece with them. Better yet- because of them.
 
+**python 3.6+ is required (eg: Ubuntu 18 LTS or higher)**
+
 ### [Need More Help?](https://csirtg.io/support)
 
 ## Docker
@@ -51,7 +53,9 @@ csirtg-fm       | 2020-03-14 15:07:45,937 - INFO - csirtg_fm[125] - sending: 500
 
 ## Testing
 ```bash
-$ pip install 'cifsdk>=5.0b1,<6.0'
+# this requires python3.6 or higher (eg: ubuntu 18 LTS..)
+
+$ pip3 install geoip2 'cifsdk>=5.0b1,<6.0'
 
 $ export CIF_REMOTE='http://localhost:5000'
 $ cif -nq example.com
