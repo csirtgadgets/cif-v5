@@ -26,7 +26,7 @@ def filters_cleanup(request):
 
 
 def is_human(headers):
-    if re.match(r'json', headers.get('Accept', '')):
+    if re.search(r'json$', headers.get('Accept', '')):
         return False
 
     if headers.get('Accept') in ['*/*', 'text/plain', 'text/csv']:

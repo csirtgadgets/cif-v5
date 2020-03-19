@@ -26,7 +26,6 @@ for ff in FIELDS:
         F[ff] = fields.String
 
 F['confidence'] = fields.Integer(min=0, max=4)
-F['count'] = fields.Integer
 F['asn'] = fields.Integer
 F['tlp'] = fields.String(enum=['white', 'green', 'amber', 'red'])
 
@@ -40,8 +39,8 @@ indicator = api.model('Indicator', F)
 filters = api.model('Filters', {
     'indicator': fields.String(),
     'itype': fields.String(enum=ITYPES),
-    'confidence': fields.Float(min=0, max=4),
-    'provider': fields.String(),
+    'confidence': fields.Integer(min=0, max=4),
+    'provider': fields.String,
     'group': fields.List(fields.String),
     'tlp': fields.String(enum=['white', 'green', 'amber', 'red']),
     'tags': fields.List(fields.String)
@@ -114,7 +113,7 @@ class IndicatorList(Resource):
     @api.param('hours', 'by last N hours (eg: 1)')
     @api.param('days', 'by last N days (eg: 7)')
     @api.param('provider', 'by provider (eg: csirtg.io)')
-    @api.marshal_list_with(indicator)
+    # @api.marshal_list_with(indicator)
     def get(self):
         """Search Indicators by Parameters"""
 
@@ -154,7 +153,8 @@ class IndicatorList(Resource):
             if is_human(request.headers):
                 csv = ''
                 for l in get_lines(rv):
-                    csv += l + "\n"
+                    # TODO- headers
+                    csv += l
 
                 return csv, 200
 
