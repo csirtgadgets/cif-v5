@@ -39,6 +39,10 @@ def test_indicators_search_fqdn(store, indicator):
     }]
     x = store.indicators.indicators_search(m)
 
+    assert len(list(x)) == 0
+
+    x = store.indicators.indicators_search(m)
+
     assert len(list(x)) == 1
 
     indicator['tags'] = 'botnet'
@@ -55,6 +59,10 @@ def test_indicators_search_fqdn(store, indicator):
     }]
     x = store.indicators.indicators_search(m)
 
+    assert len(list(x)) == 1
+
+    x = store.indicators.indicators_search(m)
+
     assert len(list(x)) > 0
 
     m.data = [{
@@ -63,7 +71,7 @@ def test_indicators_search_fqdn(store, indicator):
     }]
     x = store.indicators.indicators_search(m)
 
-    assert len(list(x)) == 1
+    assert len(list(x)) == 0
 
 
 def test_indicators_search_ipv4(store, indicator):
