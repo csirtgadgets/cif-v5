@@ -35,7 +35,7 @@ def to_dict(obj):
     if d.get('confidence'):
         d['confidence'] = int(d['confidence'])
     else:
-        d['confidence'] = None
+        d['confidence'] = 0
 
     return d
 
