@@ -74,6 +74,7 @@ class IndicatorHandler(object):
 
     def indicators_search(self, m):
         s1 = time()
+        to_log = []
         try:
             for e in m.data:
                 if e.get('limit') is None:
@@ -82,9 +83,12 @@ class IndicatorHandler(object):
                 if e.get('indicator') and e.get('itype'):
                     e['itype'] = resolve_itype(e['indicator'])
 
-                self._log_search(e)
+                to_log.append(e)
 
             yield from self.store.indicators.search(m.data)
+
+            for ee in to_log:
+                self._log_search(ee)
 
         except StopIteration as e:
             yield
