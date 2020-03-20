@@ -32,7 +32,10 @@ def to_dict(obj):
         pass
 
     d.pop('id')
-    d['confidence'] = int(d['confidence'])
+    if d.get('confidence'):
+        d['confidence'] = int(d['confidence'])
+    else:
+        d['confidence'] = None
 
     return d
 
