@@ -120,6 +120,30 @@ def test_indicators_search_ipv6(store, indicator):
     assert len(list(x)) > 0
 
 
+def test_indicators_search_bulk(store, indicator):
+    m = Msg(data=indicator)
+
+    x = store.indicators.indicators_create(m)
+
+    assert x == 1
+
+    m.data = [
+        {
+            'indicator': 'example.com',
+            'tags': 'botnet',
+            'confidence': 1
+        },
+        {
+            'indicator': 'example2.com',
+        }
+    ]
+
+    x = list(store.indicators.indicators_search(m))
+    assert len(x) == 1
+
+    assert x[0]['indicator'] == 'example.com'
+
+
 # def test_indicators_delete(store, indicator):
 #     m = Msg()
 #     m.data = [indicator]

@@ -34,7 +34,8 @@ def indicator():
         'last_at': utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
         'reported_at': utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
         'itype': 'fqdn',
-        'count': 1
+        'count': 1,
+        'confidence': 1
     }
 
 

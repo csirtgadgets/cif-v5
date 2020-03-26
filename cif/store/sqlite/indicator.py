@@ -78,22 +78,23 @@ class IndicatorManager(object):
         logger.debug(f"took: {time.time() - s1}s")
         return n
 
-    def search(self, filters, limit=500, s=None):  # NOSONAR
+    def search(self, filters, limit=500, s=None):
         if isinstance(filters, list) and len(filters) > 1:
-            return self._search_bulk(filters).limit(500)
+            yield from self._search_bulk(filters, limit)
 
-        # enrichment causes this to happen...
-        if isinstance(filters, list):
-            filters = filters[0]
+        else:
+            # enrichment causes this to happen...
+            if isinstance(filters, list):
+                filters = filters[0]
 
-        s = self._search(filters)
+            s = self._search(filters)
 
-        limit = filters.pop('limit', limit)
+            limit = filters.pop('limit', limit)
 
-        rv = s.order_by(desc(Indicator.reported_at)).limit(limit)
+            rv = s.order_by(desc(Indicator.reported_at)).limit(limit)
 
-        for i in rv:
-            yield to_dict(i)
+            for i in rv:
+                yield to_dict(i)
 
     def delete(self, data=None):
         if not isinstance(data, list):
@@ -134,7 +135,7 @@ class IndicatorManager(object):
         if d.get('drop_index') and i.drop_index != d['drop_index']:
             i.drop_index = d['drop_index']
 
-    def _search_bulk(self, filters, s=None):
+    def _search_bulk(self, filters, limit, s=None):
         s = self.handle().query(Indicator)
 
         s = s.filter(or_(Indicator.indicator == i['indicator']
@@ -143,7 +144,8 @@ class IndicatorManager(object):
         groups = ['everyone']
 
         s = s.filter(or_(Indicator.group == g for g in groups))
-        return [to_dict(i) for i in s]
+        for i in s.limit(limit):
+            yield to_dict(i)
 
     def _search(self, filters, s=None):
         myfilters = dict(filters.items())
