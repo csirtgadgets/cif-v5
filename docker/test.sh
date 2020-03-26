@@ -69,6 +69,14 @@ for i in "${CMDS[@]}"; do
     docker exec -e 'CIF_REMOTE=http://localhost:5000' -e CIF_EXPERT=1 -it ${MACHINE_NAME} cif ${i}
 done
 
+echo "testing bulk search"
+
+cat bulk.txt | docker exec -e 'CIF_REMOTE=http://localhost:5000' -e CIF_EXPERT=1 -i ${MACHINE_NAME} cif
+
+sleep 1
+
+cat bulk.txt | docker exec -e 'CIF_REMOTE=http://localhost:5000' -e CIF_EXPERT=1 -i ${MACHINE_NAME} cif
+
 echo "done..."
 
 sleep ${DONE_SLEEP}
