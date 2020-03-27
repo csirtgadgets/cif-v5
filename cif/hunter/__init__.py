@@ -191,6 +191,8 @@ class Hunter(Actor):
         for ss in [s, self.router.socket]:
             ss.close()
 
+        self.stop()
+
 
 def main():
     p = get_argument_parser()
@@ -221,11 +223,7 @@ def main():
 
     m = Manager(target=Hunter, threads=args.workers)
 
-    try:
-        m.start()
-
-    except KeyboardInterrupt:
-        m.stop()
+    m.start()
 
 
 if __name__ == '__main__':

@@ -83,7 +83,8 @@ class IndicatorHandler(object):
                 if e.get('indicator') and e.get('itype'):
                     e['itype'] = resolve_itype(e['indicator'])
 
-                to_log.append(e)
+                if e.get('indicator'):
+                    to_log.append(e)
 
             yield from self.store.indicators.search(m.data)
 
