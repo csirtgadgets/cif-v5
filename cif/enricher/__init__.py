@@ -41,6 +41,8 @@ class Enricher(Actor):
     def _process_message(self, message):
         m = Msg().from_frame(message)
 
+        logger.debug(f"handling: {len(m.data)}")
+
         m.data = [Indicator(**i) for i in m.data]
         try:
             [p.process(m.data) for p in self.plugins]
@@ -52,8 +54,16 @@ class Enricher(Actor):
             logger.error(e)
             logger.debug(traceback.print_exc())
 
-        m.data = [i.__dict__() for i in m.data]
+        try:
+            m.data = [i.__dict__() for i in m.data]
+
+        except Exception as e:
+            logger.error(e)
+            m.data = []
+
         self.push_s.send_msg(m)
+
+        logger.debug('done...')
 
     def start(self):
         pull_s = Context().socket(zmq.PULL)

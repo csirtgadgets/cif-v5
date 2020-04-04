@@ -1,6 +1,6 @@
 .PHONY: clean test sdist all dist deploy docker docker-test
 
-all: test sdist
+all: docker
 
 clean:
 	rm -rf `find . | grep \.pyc`
