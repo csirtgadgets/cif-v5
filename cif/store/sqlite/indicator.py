@@ -90,9 +90,7 @@ class IndicatorManager(object):
             s = self._search(filters)
 
             limit = filters.pop('limit', limit)
-
-            rv = s.order_by(desc(Indicator.reported_at)).limit(limit)
-
+            rv = s.order_by(desc(Indicator.reported_at)).limit(limit).all()
             for i in rv:
                 yield to_dict(i)
 
@@ -155,7 +153,7 @@ class IndicatorManager(object):
         # if no tags are presented, users probably expect non special data
         # in their results
         if not myfilters.get('tags') and not myfilters.get('indicator'):
-            s = s.outerjoin(Tag)
+            s = s.join(Tag)
             s = s.filter(Tag.tag != 'pdns')
             s = s.filter(Tag.tag != 'search')
 

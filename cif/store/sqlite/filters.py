@@ -86,8 +86,8 @@ def filter_indicator(filters, s):
 
 def filter_terms(filters, s):  # NOSONAR
 
-    idx = ['reported_at', 'itype', 'confidence', 'provider', 'asn', 'cc',
-           'asn_desc', 'rdata', 'region', 'uuid', 'tags', 'drop_index']
+    idx = ['reported_at', 'itype', 'confidence', 'tags', 'provider', 'asn', 'cc',
+           'asn_desc', 'rdata', 'region', 'uuid',  'drop_index']
 
     for k in idx:
         if not filters.get(k):
@@ -149,7 +149,7 @@ def filter_terms(filters, s):  # NOSONAR
             t = v
             if isinstance(v, str):
                 t = v.split(',')
-            s = s.outerjoin(Tag)
+            s = s.join(Tag)
             s = s.filter(or_(Tag.tag == tt for tt in t))
 
         elif k == 'drop_index':

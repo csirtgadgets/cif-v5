@@ -1,7 +1,6 @@
 import arrow
 import ujson as json
 import logging
-from msgpack import packb, unpackb
 
 from sqlalchemy import Column, Integer, String, Float, DateTime, UnicodeText, \
     ForeignKey, Index
@@ -66,6 +65,7 @@ class Indicator(BASE, ItypesMixin):
         primaryjoin='and_(Indicator.id==Tag.indicator_id)',
         backref=backref('tags', uselist=True),
         lazy='subquery',
+        innerjoin=True,
         cascade="all,delete"
     )
 

@@ -5,12 +5,12 @@ from csirtg_indicator.feed.ipv4 import process as feed_ipv4
 from csirtg_indicator.feed.ipv6 import process as feed_ipv6
 
 FEEDS_DAYS = 60
-FEEDS_LIMIT = 250000
-FEEDS_WHITELIST_LIMIT = os.getenv("CIF_HTTPD_FEED_WHITELIST_LIMIT", 15000)
+FEEDS_LIMIT = os.getenv("CIF_HTTPD_FEED_LIMIT", 500)
+FEEDS_WHITELIST_LIMIT = os.getenv("CIF_HTTPD_FEED_WHITELIST_LIMIT", 1000)
 FEEDS_WHITELIST_DAYS = 14
 
 HTTPD_FEED_WHITELIST_CONFIDENCE = \
-    os.getenv('CIF_HTTPD_FEED_WHITELIST_CONFIDENCE', 2)
+    os.getenv('CIF_HTTPD_FEED_WHITELIST_CONFIDENCE', 3)
 
 CONFIDENCE_DEFAULT = 3
 
