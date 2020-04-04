@@ -14,6 +14,10 @@ services:
       CIF_DATA_PATH: /var/lib/cif
       CIF_HUNT: 1
       CIF_ROUTER_TRACE: 1
+      CIF_ENRICHMENT: 1
+      CSIRTG_ENRICHMENT_PEERS: 1
+      CSIRTG_ENRICHMENT_GEO: 1
+      CSIRTG_ENRICHMENT_FQDN: 1
 
 
   cif-enricher:

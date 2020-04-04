@@ -22,4 +22,20 @@ if [ -z ${CIF_ENRICHMENT_THREADS} ]; then
     export CIF_ENRICHMENT_THREADS=2
 fi
 
+if [ -z ${CSIRTG_ENRICHMENT_PEERS} ]; then
+    export CSIRTG_ENRICHMENT_PEERS=0
+fi
+
+if [ -z ${CSIRTG_ENRICHMENT_FQDN} ]; then
+    export CSIRTG_ENRICHMENT_FQDN=0
+fi
+
+if [ -z ${CSIRTG_INDICATOR_PEERS} ]; then
+    export CSIRTG_INDICATOR_PEERS=0
+fi
+
+if [ -z ${CSIRTG_INDICATOR_PEERS} ]; then
+    export CSIRTG_INDICATOR_FQDN=0
+fi
+
 cif-enricher

@@ -11,9 +11,9 @@ arrow~=0.15
 csirtg-dt==0.1
 csirtg-re==0.1
 csirtg-peers~=0.4
-csirtg-spamhaus==0.1
+csirtg-spamhaus>=0.2,<1.0
 
-csirtg-indicator>=3.0b1,<4.0
+csirtg-indicator>=3.0b2,<4.0
 
 csirtgsdk==1.1.5
 

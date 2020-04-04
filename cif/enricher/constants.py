@@ -25,4 +25,4 @@ THREADS = os.getenv('CIF_ENRICHMENT_THREADS', 1)
 
 PLUGINS_NAMESPACE = 'csirtg_enrichment_'
 
-LOGLEVEL = os.getenv('CIF_ENRICHER_LOGLEVEL', 'ERROR')
+LOGLEVEL = os.getenv('CIF_LOGLEVEL', 'ERROR')
