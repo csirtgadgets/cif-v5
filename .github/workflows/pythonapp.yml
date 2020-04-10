@@ -34,4 +34,5 @@ jobs:
         python setup.py develop
         make test
         python setup.py sdist
+        ls -all dist/
         make docker
