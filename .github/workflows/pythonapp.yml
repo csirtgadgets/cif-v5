@@ -28,6 +28,7 @@ jobs:
         echo "UserId ${{ secrets.mm_userid }}" | sudo tee /etc/GeoIP.conf > /dev/null
         echo "LicenseKey ${{ secrets.mm_lic }}" | sudo tee -a /etc/GeoIP.conf > /dev/null
         echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf > /dev/null
+        sudo geoipupdate -v
         python -m pip install --upgrade pip
         pip install -r dev_requirements.txt
         python setup.py develop
