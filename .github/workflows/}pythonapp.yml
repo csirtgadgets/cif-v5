@@ -22,6 +22,9 @@ jobs:
         python-version: 3.7
     - name: Install dependencies
       run: |
+        add-apt-repository -y ppa:maxmind/ppa
+        apt-get update
+        apt-get install geoipupdate libsnappy-dev
         python -m pip install --upgrade pip
         pip install -r dev_requirements.txt
         python setup.py develop
