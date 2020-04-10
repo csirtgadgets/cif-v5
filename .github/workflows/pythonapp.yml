@@ -37,4 +37,5 @@ jobs:
         make test
         python setup.py sdist
         ls -all dist/
+        mv dist/*.tar.gz dist/cif-5.tar.gz
         make docker
