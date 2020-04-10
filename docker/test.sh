@@ -77,6 +77,12 @@ sleep 1
 
 cat bulk.txt | docker exec -e 'CIF_REMOTE=http://localhost:5000' -e CIF_EXPERT=1 -i ${MACHINE_NAME} cif
 
+docker exec -e 'CIF_REMOTE=http://localhost:5000' -it ${MACHINE_NAME} cif -q '5.5.5.5,6.6.6.6'
+
+sleep 1
+
+docker exec -e 'CIF_REMOTE=http://localhost:5000' -it ${MACHINE_NAME} cif -q '5.5.5.5,6.6.6.6'
+
 echo "done..."
 
 sleep ${DONE_SLEEP}
