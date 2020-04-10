@@ -33,4 +33,5 @@ jobs:
         pip install -r dev_requirements.txt
         python setup.py develop
         make test
+        python setup.py sdist
         make docker
