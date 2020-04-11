@@ -49,8 +49,7 @@ jobs:
           python-version: 3.7
       
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       
       - name: Install dependencies
         run: |
