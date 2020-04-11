@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -37,6 +37,23 @@ jobs:
           pip install -r dev_requirements.txt
           python setup.py develop
           make test
+          python setup.py sdist
+  
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      - name: Install dependencies
+        run: |
           python setup.py sdist
           ls -all dist/
           make docker
