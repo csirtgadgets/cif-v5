@@ -75,12 +75,13 @@ class IndicatorHandler(object):
     def indicators_search(self, m):
         s1 = time()
         to_log = []
+
         try:
             for e in m.data:
                 if e.get('limit') is None:
                     e['limit'] = LIMIT
 
-                if e.get('indicator') and e.get('itype'):
+                if e.get('indicator') and not e.get('itype'):
                     e['itype'] = resolve_itype(e['indicator'])
 
                 if e.get('indicator'):

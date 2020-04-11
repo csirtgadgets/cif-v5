@@ -4,6 +4,7 @@ from json import loads
 from flask_restplus import Namespace, Resource, fields
 from flask import request, current_app
 import zmq
+from pprint import pprint
 
 from cifsdk.client.zeromq import ZMQ as Client
 from csirtg_indicator.format.csv import get_lines
@@ -125,6 +126,10 @@ class IndicatorList(Resource):
 
         if current_app.config.get('dummy'):
             return [{'indicator': f['indicator']}], 200
+
+        if f.get('indicator') and ',' in f['indicator']:
+            return _search_bulk([{'indicator': i} for i in f['indicator']
+                                .split(',')]), 200
 
         try:
             rv = get_feed(f)
