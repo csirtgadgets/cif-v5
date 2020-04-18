@@ -4,8 +4,8 @@
 name: Python application
 
 on:
-  push:
-    branches: [ master ]
+  release:
+    types: [created]
 
 jobs:
   test:
@@ -52,8 +52,9 @@ jobs:
       
       - name: Install dependencies
         run: |
+          pip install -r requirements.txt
+          python setup.py develop
           python setup.py sdist
           ls -all dist/
           mv dist/cif-*.tar.gz dist/cif-5.0.tar.gz
-          ls -all dist/
-          cd docker && bash build.sh
+          cd docker && bash build.sh && tag.sh
