@@ -1,0 +1,60 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python application
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      - name: Install dependencies
+        run: |
+          sudo add-apt-repository -y ppa:maxmind/ppa
+          sudo apt-get update
+          sudo apt-get install geoipupdate libsnappy-dev
+          echo "UserId ${{ secrets.mm_userid }}" | sudo tee /etc/GeoIP.conf > /dev/null
+          echo "LicenseKey ${{ secrets.mm_lic }}" | sudo tee -a /etc/GeoIP.conf > /dev/null
+          echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf > /dev/null
+          sudo geoipupdate -v
+          python -m pip install --upgrade pip
+          pip install -r dev_requirements.txt
+          python setup.py develop
+          make test
+          python setup.py sdist
+  
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      
+      - uses: actions/checkout@v2
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python setup.py develop
+          python setup.py sdist
+          ls -all dist/
+          mv dist/cif-*.tar.gz dist/cif-5.0.tar.gz
+          cd docker && bash build.sh && tag.sh
