@@ -4,8 +4,6 @@
 name: Python application
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -38,24 +36,3 @@ jobs:
           python setup.py develop
           make test
           python setup.py sdist
-  
-  docker:
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.7
-      
-      - uses: actions/checkout@v2
-      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      
-      - name: Install dependencies
-        run: |
-          python setup.py sdist
-          ls -all dist/
-          mv dist/cif-*.tar.gz dist/cif-5.0.tar.gz
-          ls -all dist/
-          cd docker && bash build.sh
