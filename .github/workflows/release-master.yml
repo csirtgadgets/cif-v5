@@ -63,4 +63,10 @@ jobs:
           python setup.py sdist
           ls -all dist/
           mv dist/cif-*.tar.gz dist/cif-5.0.tar.gz
-          cd docker && bash build.sh && tag.sh
+          cd docker && bash build.sh && bash tag.sh
+          cif-router --version
+          
+      - name: tag and push to hub.docker.com
+        if: startsWith(github.event.ref, 'refs/tags')
+        run: |
+          echo "uploading to docker..."
