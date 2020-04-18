@@ -4,8 +4,11 @@
 name: Python application
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 5.*
+    branches:
+      - master
 
 jobs:
   test:
