@@ -9,7 +9,7 @@ python-snappy~=0.5
 arrow~=0.15
 
 csirtg-dt==0.1
-csirtg-re==0.1
+csirtg-re==0.2
 csirtg-peers~=0.4
 csirtg-spamhaus>=0.2,<1.0
 
