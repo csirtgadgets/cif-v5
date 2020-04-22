@@ -1,4 +1,5 @@
 
+csirtg-re>=0.2,<1.0
 csirtg_indicator>=3.0a1,<4.0
 
 feedparser>=5.2.1
