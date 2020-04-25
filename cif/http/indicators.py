@@ -42,7 +42,7 @@ filters = api.model('Filters', {
     'itype': fields.String(enum=ITYPES),
     'confidence': fields.Integer(min=0, max=4),
     'provider': fields.String,
-    'group': fields.List(fields.String),
+    'group': fields.String,
     'tlp': fields.String(enum=['white', 'green', 'amber', 'red']),
     'tags': fields.List(fields.String)
 })
