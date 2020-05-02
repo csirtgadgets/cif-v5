@@ -57,6 +57,10 @@ class IndicatorHandler(object):
         i['itype'] = resolve_itype(i['indicator'])
         i['tags'] = 'search'
         i['confidence'] = 4
+        i['tlp'] = 'amber'
+        i['group'] = 'everyone'
+        i['count'] = 1
+        i['description'] = 'search'
 
         self.store.indicators.create(i)
 
@@ -83,6 +87,9 @@ class IndicatorHandler(object):
 
                 if e.get('indicator') and not e.get('itype'):
                     e['itype'] = resolve_itype(e['indicator'])
+
+                if e.get('nolog', 0) == 1:
+                    continue
 
                 if e.get('indicator'):
                     to_log.append(e)

@@ -14,6 +14,8 @@ services:
       CIF_DATA_PATH: /var/lib/cif
       CIF_LOGLEVEL: "INFO"
       CIF_ENRICHMENT: 1
+#      CIF_STORE_STORE: 'es'
+#      CIF_ES_NODES: 'http://elasticsearch:9200'
 #      CIF_ROUTER_TRACE: 1
 #      CIF_STORE_TRACE: 1
 #      CIF_STORE_SQLITE_TRACE: 1

@@ -53,6 +53,10 @@ class Store(MyProcess):
             from .sqlite import SQLite
             return SQLite(**kwargs)
 
+        elif kwargs.get('store_type') == 'es':
+            from .es import ES
+            return ES(**kwargs)
+
         try:
             p = init_plugins(kwargs.get('store_type'))
             p = p[kwargs['store_type']].Plugin
