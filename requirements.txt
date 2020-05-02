@@ -1,6 +1,8 @@
 pytricia~=1.0
 SQLAlchemy~=1.3
 SQLAlchemy-Utils
+elasticsearch~=7.6
+elasticsearch-dsl~=7.1
 
 werkzeug~=0.16
 Flask~=1.1
