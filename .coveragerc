@@ -26,6 +26,7 @@ ignore_errors = True
 omit =
     cif/_version.py
     cif/httpd/app.py
+    cif/store/es/*
 
 
 [html]
