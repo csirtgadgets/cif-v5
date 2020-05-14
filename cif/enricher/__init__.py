@@ -43,7 +43,13 @@ class Enricher(Actor):
 
         logger.debug(f"handling: {len(m.data)}")
 
-        m.data = [Indicator(**i) for i in m.data]
+        try:
+            m.data = [Indicator(**i) for i in m.data]
+
+        except Exception as e:
+            logger.error(e)
+            logger.debug(traceback.print_exc())
+
         try:
             [p.process(m.data) for p in self.plugins]
 
