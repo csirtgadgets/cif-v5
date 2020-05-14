@@ -17,4 +17,4 @@ csirtg-indicator>=3.0b2,<4.0
 
 csirtgsdk==1.1.5
 
-cifsdk>=5.0b5,<6.0
+cifsdk>=5.0b6,<6.0
