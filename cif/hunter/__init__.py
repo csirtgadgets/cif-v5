@@ -92,7 +92,6 @@ class Hunter(Actor):
 
     def _process_plugins(self, i):
         for p in self.plugins:
-
             try:
                 indicators = self._process_plugin(p, i)
 

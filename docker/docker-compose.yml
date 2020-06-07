@@ -47,6 +47,8 @@ services:
       MAXMIND_USERID: ${MAXMIND_USERID}
       MAXMIND_LIC: ${MAXMIND_LIC}
       CIF_LOGLEVEL: "INFO"
+      CSIRTG_INDICATOR_GEO: '1'
+      CSIRTG_INDICATOR_FQDN: '1'
 
   csirtg-fm:
     depends_on:

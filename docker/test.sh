@@ -6,6 +6,9 @@ DONE_SLEEP=90
 
 set -e
 
+rm -rf data/cif/cifv5.db
+rm -rf data/fm/fm.db
+
 echo 'giving things a chance to settle...'
 sleep 5
 
@@ -31,6 +34,7 @@ sleep 5
 docker exec -it -e 'CIF_REMOTE=http://localhost:5000' cif-httpd cif -q 93.184.216.34
 
 declare -a CMDS=(
+    "-r /etc/cif/rules/default/alexa.yml"
     "-r /etc/cif/rules/default/openphish.yml"
     "-r /etc/cif/rules/default/openphish.yml"
     "-r /etc/cif/rules/default/csirtg.yml -f csirtgadgets/darknet"
