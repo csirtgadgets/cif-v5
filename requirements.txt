@@ -19,6 +19,6 @@ csirtg-geo>=0.3,<1.0
 
 -r sdk_requirements.txt
 
-csirtg-hunter>=2.0b3,<3.0
+csirtg-hunter>=2.0b4,<3.0
 csirtg-enrichment>=0.3,<1.0
 csirtg_dnsdb==0.0.0a4
