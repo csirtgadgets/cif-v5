@@ -10,7 +10,7 @@ if [[ ${VERSION} == "" ]]; then
     exit;
 fi
 
-if [[ "${VERSION}" =~ 'dirty' ]]; then
+if [[ "${VERSION}" =~ 'dirty' || "${VERSION}" =~ 'untagged' ]]; then
   VERSION='5.0-test'
 fi
 
