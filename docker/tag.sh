@@ -10,6 +10,10 @@ if [[ ${VERSION} == "" ]]; then
     exit;
 fi
 
+if [[ "${VERSION}" =~ 'dirty' ]]; then
+  VERSION='5.0-test'
+fi
+
 for img in ${IMAGES}
 do
     docker tag csirtgadgets/${img}:latest csirtgadgets/${img}:${VERSION}
