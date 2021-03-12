@@ -27,6 +27,7 @@ jobs:
           sudo add-apt-repository -y ppa:maxmind/ppa
           sudo apt-get update
           sudo apt-get install geoipupdate libsnappy-dev
+
           echo "UserId ${{ secrets.mm_userid }}" | sudo tee /etc/GeoIP.conf > /dev/null
           echo "LicenseKey ${{ secrets.mm_lic }}" | sudo tee -a /etc/GeoIP.conf > /dev/null
           echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf > /dev/null
