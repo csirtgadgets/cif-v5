@@ -5,12 +5,6 @@ import sys
 
 ENABLE_INSTALL = os.getenv('CIF_ENABLE_INSTALL')
 
-if not ((3, 7) <= sys.version_info <= (3, 8)):
-    print("\n")
-    print("This requires python 3.7, it will not yet work with 3.8")
-    print("\n")
-    raise SystemExit
-
 if sys.argv[-1] == 'install' and not ENABLE_INSTALL:
     print('')
     print('CIFv5 Should NOT be installed using traditional install methods')
@@ -61,6 +55,7 @@ setup(
     author="Wes Young",
     author_email="wes@csirtgadgets.com",
     packages=find_packages(exclude='test'),
+    python_requires='>=3.6, <3.8', # Software only validated on python 3.7
     install_requires=[
         'SQLAlchemy',
         'SQLAlchemy-Utils',
