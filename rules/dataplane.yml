@@ -7,7 +7,7 @@ feeds:
   dnsrd:
     remote: https://dataplane.org/dnsrd.txt
     defaults:
-      protocol: udp
+      protocol: 17
       portlist: 53
       tags: scanner, dns
       description: 'identified as sending recursive DNS queries to a remote host'
@@ -15,7 +15,7 @@ feeds:
   dnsrdany:
     remote: https://dataplane.org/dnsrdany.txt
     defaults:
-      protocol: udp
+      protocol: 17
       portlist: 53
       tags: scanner, dns
       description: 'identified as sending recursive DNS IN ANY queries to a remote host'
@@ -23,7 +23,7 @@ feeds:
   dnsversion:
     remote: https://dataplane.org/dnsversion.txt
     defaults:
-      protocol: udp
+      protocol: 17
       portlist: 53
       tags: scanner, dns
       description: 'identified as sending DNS CH TXT VERSION.BIND queries to a remote host'
@@ -31,14 +31,14 @@ feeds:
   proto41:
     remote: https://dataplane.org/proto41.txt
     defaults:
-      protocol: ipv6
+      protocol: 41
       tags: proxy, ipv6
       description: 'identified as an open IPv4 protocol 41 relay (i.e. IPv6 over IPv4)'
 
   sipquery:
     remote: https://dataplane.org/sipquery.txt
     defaults:
-      protocol: tcp, udp
+      protocol: 17
       portlist: 5060
       tags: scanner, sip
       description: 'seen initiating a SIP OPTIONS query to a remote host'
@@ -46,7 +46,7 @@ feeds:
   sipinvitation:
     remote: https://dataplane.org/sipinvitation.txt
     defaults:
-      protocol: tcp, udp
+      protocol: 17
       portlist: 5060
       tags: scanner, sip
       description: 'seen initiating a SIP INVITE operation to a remote host'
@@ -54,7 +54,7 @@ feeds:
   sipregistration:
     remote: https://dataplane.org/sipregistration.txt
     defaults:
-      protocol: tcp, udp
+      protocol: 17
       portlist: 5060
       tags: scanner, sip
       description: 'seen initiating a SIP REGISTER operation to a remote host'
@@ -62,7 +62,7 @@ feeds:
   smtpdata:
     remote: https://dataplane.org/smtpdata.txt
     defaults:
-      protocol: tcp
+      protocol: 6
       portlist: 25
       tags: scanner, smtp, spam
       description: 'identified as SMTP clients sending DATA commands'
@@ -70,7 +70,7 @@ feeds:
   smtpgreet:
     remote: https://dataplane.org/smtpgreet.txt
     defaults:
-      protocol: tcp
+      protocol: 6
       portlist: 25
       tags: scanner, smtp
       description: 'identified as SMTP clients issuing unsolicited HELO or EHLO commands'
@@ -79,7 +79,7 @@ feeds:
   sshclient:
     remote: https://dataplane.org/sshclient.txt
     defaults:
-      protocol: tcp
+      protocol: 6
       portlist: 22
       tags: scanner, ssh
       description: 'has been seen initiating an SSH connection'
@@ -88,7 +88,7 @@ feeds:
   ssh:
     remote: https://dataplane.org/sshpwauth.txt
     defaults:
-      protocol: tcp
+      protocol: 6
       portlist: 22
       tags: bruteforce, scanner, ssh
       description: 'seen attempting to remotely login using SSH password authentication'
@@ -96,7 +96,7 @@ feeds:
   telnetlogin:
     remote: https://dataplane.org/telnetlogin.txt
     defaults:
-      protocol: tcp
+      protocol: 6
       portlist: 23
       tags: bruteforce, scanner, telnet
       description: 'identified as attempting login via TELNET password authentication'
@@ -104,7 +104,7 @@ feeds:
   vnc:
     remote: http://dataplane.org/vncrfb.txt
     defaults:
-      protocol: tcp
+      protocol: 6
       portlist: 5900
       tags: scanner, vnc
       description: "seen initiating a VNC remote frame buffer (RFB) session to a remote host"
