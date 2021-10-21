@@ -5,7 +5,8 @@ feeds:
     defaults:
       last_at: day
       tags:
-        - spam,forum
+        - spam
+        - forum
     pattern: '^(\S+)$'
     values:
       - indicator
