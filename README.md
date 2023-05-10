@@ -6,8 +6,6 @@ The default, CIF/Docker configuration is NOT meant to be deployed in large scale
 
 **python 3.6+ is required (eg: Ubuntu 18 LTS or higher)**
 
-### [Need More Help?](https://csirtg.io/support)
-
 ## Docker
 ### Up and Running
 
